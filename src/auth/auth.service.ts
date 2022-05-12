@@ -5,6 +5,7 @@ import * as argon from 'argon2';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
+import process from 'process';
 
 @Injectable()
 export class AuthService {
@@ -67,7 +68,7 @@ export class AuthService {
       sub: userId,
       email,
     };
-    const secret = this.config.get('JWT-SECRET');
+    const secret = process.env['JWT-SECRET'] || this.config.get('JWT-SECRET');
 
     const token = await this.jwt.signAsync(payload, {
       expiresIn: '43200m',

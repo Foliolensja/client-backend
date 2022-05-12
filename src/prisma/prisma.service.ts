@@ -1,13 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaClient } from '@prisma/client';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class PrismaService extends PrismaClient {
-  constructor() {
+  constructor(private config: ConfigService) {
     super({
       datasources: {
         db: {
-          url: 'mongodb+srv://admin:G8WtzJ6%26za%254%21mqH@foliolens-test.fqsnb.mongodb.net/database?retryWrites=true&w=majority',
+          url: process.env['DATABASE-URL'] || this.config.get('JWT-SECRET'),
         },
       },
     });

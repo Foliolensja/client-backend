@@ -25,6 +25,9 @@ export class AuthService {
           firstName: dto.firstName,
           lastName: dto.lastName,
           dob: dto.dob,
+          salary: dto.salary,
+          netWorth: dto.netWorth,
+          riskRating: dto.riskRating,
           portfolio: {
             indices: [],
             updatedAt: new Date(),

@@ -19,10 +19,11 @@ model User {
   email String @unique
   hash  String
 
-  dob DateTime @db.Date
+  dob        DateTime @db.Date
+  riskRating Int
+  netWorth   Float
+  salary     Float
 
-  riskAppetite Int?
-  riskRating   Int?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -84,4 +85,12 @@ model IndexChange {
   index_info Markets
 
   @@map("indices")
+}
+
+model Summary {
+  id      String @id @default(auto()) @map("_id") @db.ObjectId
+  date    String @unique
+  summary String
+
+  @@map("summaries")
 }

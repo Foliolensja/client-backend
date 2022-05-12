@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { TradingDaysService } from './trading-days.service';
 
 @Controller('trading-days')
@@ -13,10 +13,5 @@ export class TradingDaysController {
   @Get(':date')
   findOne(@Param('date') date: string) {
     return this.tradingDaysService.findOne(date);
-  }
-
-  @Delete(':date')
-  remove(@Param('date') date: string) {
-    return this.tradingDaysService.remove(date);
   }
 }

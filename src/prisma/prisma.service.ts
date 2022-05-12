@@ -8,7 +8,7 @@ export class PrismaService extends PrismaClient {
     super({
       datasources: {
         db: {
-          url: process.env['DATABASE-URL'] || this.config.get('JWT-SECRET'),
+          url: process.env['DATABASE-URL'] || config.get('JWT-SECRET'),
         },
       },
     });

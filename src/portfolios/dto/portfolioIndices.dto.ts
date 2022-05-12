@@ -9,10 +9,6 @@ import {
 class Indices {
   @IsNotEmpty()
   @IsString()
-  name: string;
-
-  @IsNotEmpty()
-  @IsString()
   ticker: string;
 
   @IsNotEmpty()

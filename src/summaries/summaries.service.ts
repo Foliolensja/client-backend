@@ -6,9 +6,9 @@ export class SummariesService {
   constructor(private prisma: PrismaService) {}
   async findAll() {
     try {
-      const tradingDays = await this.prisma.summary.findMany();
+      const summaries = await this.prisma.summary.findMany();
 
-      return tradingDays;
+      return summaries;
     } catch (error) {
       throw error;
     }
@@ -16,13 +16,13 @@ export class SummariesService {
 
   async findOne(date: string) {
     try {
-      const tradingDay = await this.prisma.summary.findUnique({
+      const summary = await this.prisma.summary.findUnique({
         where: {
           date: date,
         },
       });
 
-      return tradingDay;
+      return summary;
     } catch (error) {
       throw error;
     }

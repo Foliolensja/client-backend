@@ -1,0 +1,87 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["mongoDb"]
+}
+
+model User {
+  id        String @id @default(auto()) @map("_id") @db.ObjectId
+  firstName String
+  lastName  String
+
+  email String @unique
+  hash  String
+
+  dob DateTime @db.Date
+
+  riskAppetite Int?
+  riskRating   Int?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  portfolio Portfolio
+
+  @@map("users")
+}
+
+type Portfolio {
+  indices   UserIndex[]
+  updatedAt DateTime
+}
+
+type UserIndex {
+  ticker String
+  weight Decimal
+}
+
+type Index {
+  ticker       String
+  name         String
+  volume       String
+  c_price      String
+  price_change String
+  change       String
+}
+
+model TradingDay {
+  id           String  @id @default(auto()) @map("_id") @db.ObjectId
+  date         String  @unique
+  advancing    Index[]
+  declining    Index[]
+  trading_firm Index[]
+
+  @@map("activities")
+}
+
+type DailyIndices {
+  date           String
+  points         String
+  change         String
+  change_percent String
+  volume         String
+}
+
+type Markets {
+  main          DailyIndices
+  junior        DailyIndices
+  combined      DailyIndices
+  us            DailyIndices
+  financial     DailyIndices
+  manufacturing DailyIndices
+}
+
+model IndexChange {
+  id         String  @id @default(auto()) @map("_id") @db.ObjectId
+  date       String  @unique
+  index_info Markets
+
+  @@map("indices")
+}

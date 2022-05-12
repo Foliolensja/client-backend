@@ -7,8 +7,7 @@ datasource db {
 }
 
 generator client {
-  provider        = "prisma-client-js"
-  previewFeatures = ["mongoDb"]
+  provider = "prisma-client-js"
 }
 
 model User {
@@ -16,7 +15,7 @@ model User {
   firstName String
   lastName  String
 
-  email String @unique
+  email String
   hash  String
 
   dob        DateTime @db.Date
@@ -30,6 +29,7 @@ model User {
 
   portfolio Portfolio
 
+  @@unique([email])
   @@map("users")
 }
 
@@ -54,11 +54,12 @@ type Index {
 
 model TradingDay {
   id           String  @id @default(auto()) @map("_id") @db.ObjectId
-  date         String  @unique
+  date         String
   advancing    Index[]
   declining    Index[]
   trading_firm Index[]
 
+  @@unique([date])
   @@map("activities")
 }
 
@@ -81,16 +82,9 @@ type Markets {
 
 model IndexChange {
   id         String  @id @default(auto()) @map("_id") @db.ObjectId
-  date       String  @unique
+  date       String
   index_info Markets
 
+  @@unique([date])
   @@map("indices")
-}
-
-model Summary {
-  id      String @id @default(auto()) @map("_id") @db.ObjectId
-  date    String @unique
-  summary String
-
-  @@map("summaries")
 }

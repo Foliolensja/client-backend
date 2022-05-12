@@ -68,7 +68,7 @@ export class AuthService {
       sub: userId,
       email,
     };
-    const secret = process.env['JWT-SECRET'] || this.config.get('JWT-SECRET');
+    const secret = process.env.JWT_SECRET || this.config.get('JWT-SECRET');
 
     const token = await this.jwt.signAsync(payload, {
       expiresIn: '43200m',

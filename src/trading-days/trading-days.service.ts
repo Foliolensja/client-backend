@@ -27,4 +27,8 @@ export class TradingDaysService {
       throw error;
     }
   }
+
+  findDate() {
+    return new Date();
+  }
 }

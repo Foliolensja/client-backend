@@ -10,6 +10,11 @@ export class TradingDaysController {
     return this.tradingDaysService.findAll();
   }
 
+  @Get('date')
+  findDate() {
+    return this.tradingDaysService.findDate();
+  }
+
   @Get(':date')
   findOne(@Param('date') date: string) {
     return this.tradingDaysService.findOne(date);

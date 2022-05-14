@@ -16,6 +16,16 @@ class Indices {
   weight: number;
 }
 
+class Tracker {
+  @IsNotEmpty()
+  @IsString()
+  date: string;
+
+  @IsNotEmpty()
+  @IsNumber()
+  value: number;
+}
+
 export class IndicesDto {
   @IsNotEmpty()
   @IsString()
@@ -24,4 +34,8 @@ export class IndicesDto {
   @ValidateNested({ each: true })
   @Type(() => Indices)
   indices: Indices[];
+
+  @ValidateNested({ each: true })
+  @Type(() => Tracker)
+  tracker: Tracker[];
 }

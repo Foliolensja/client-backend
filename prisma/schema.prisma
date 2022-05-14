@@ -26,21 +26,31 @@ model User {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  updated   Boolean
 
   portfolio Portfolio
+  tracker   Tracker
 
   @@unique([email])
   @@map("users")
 }
 
 type Portfolio {
-  indices   UserIndex[]
-  updatedAt DateTime
+  indices UserIndex[]
+}
+
+type Tracker {
+  dates DatesValues[]
 }
 
 type UserIndex {
   ticker String
   weight Decimal
+}
+
+type DatesValues {
+  date  String
+  value Decimal
 }
 
 type Index {

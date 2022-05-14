@@ -16,8 +16,11 @@ export class PortfoliosService {
         data: {
           portfolio: {
             indices: dto.indices,
-            updatedAt: new Date(),
           },
+          tracker: {
+            dates: dto.tracker,
+          },
+          updated: false,
         },
       });
 

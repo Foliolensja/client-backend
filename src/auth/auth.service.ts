@@ -30,8 +30,11 @@ export class AuthService {
           riskRating: dto.riskRating,
           portfolio: {
             indices: [],
-            updatedAt: new Date(),
           },
+          tracker: {
+            dates: [],
+          },
+          updated: true,
         },
       });
 

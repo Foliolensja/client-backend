@@ -29,10 +29,23 @@ export class TradingDaysService {
     }
   }
 
+  twoDigits(val: number) {
+    const x = val.toString();
+    if (x.length < 2) {
+      return '0' + x;
+    }
+    return x;
+  }
+
   async findDate() {
     try {
       const date = new Date();
-      let dateString = date.toString().substring(0, 10);
+      let dateString =
+        date.getFullYear() +
+        '-' +
+        this.twoDigits(date.getMonth() + 1) +
+        '-' +
+        this.twoDigits(date.getDate());
 
       let tradingDay = await this.prisma.tradingDay.findUnique({
         where: {
@@ -42,7 +55,12 @@ export class TradingDaysService {
 
       while (!tradingDay) {
         date.setDate(date.getDate() - 1);
-        dateString = date.toString().substring(0, 10);
+        dateString =
+          date.getFullYear() +
+          '-' +
+          this.twoDigits(date.getMonth() + 1) +
+          '-' +
+          this.twoDigits(date.getDate());
 
         tradingDay = await this.prisma.tradingDay.findUnique({
           where: {

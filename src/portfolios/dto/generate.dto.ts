@@ -11,11 +11,11 @@ export class GenerateDto {
 
   @IsNumber()
   @IsNotEmpty()
-  reportedRisk: number;
+  reported_risk: number;
 
   @IsNumber()
   @IsNotEmpty()
-  netWorth: number;
+  net_worth: number;
 
   @IsNumber()
   @IsNotEmpty()

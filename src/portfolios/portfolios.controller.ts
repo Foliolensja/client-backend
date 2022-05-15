@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { IndicesDto, GenerateDto } from './dto';
 import { PortfoliosService } from './portfolios.service';
 
@@ -14,5 +14,11 @@ export class PortfoliosController {
   @Post('generate-portfolio')
   generatePortfolio(@Body() dto: GenerateDto) {
     return this.portfolioService.generatePortfolio(dto);
+  }
+
+  @Get('test')
+  test() {
+    console.log('test');
+    return 1;
   }
 }

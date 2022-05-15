@@ -1,7 +1,7 @@
 import { ForbiddenException, Injectable } from '@nestjs/common';
 // import { PrismaClientKnownRequestError } from '@prisma/client/runtime';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { IndicesDto } from './dto';
+import { GenerateDto, IndicesDto } from './dto';
 
 @Injectable()
 export class PortfoliosService {
@@ -30,5 +30,10 @@ export class PortfoliosService {
     } catch (error) {
       throw new ForbiddenException('User not found');
     }
+  }
+
+  generatePortfolio(dto: GenerateDto) {
+    console.log('test');
+    return dto;
   }
 }

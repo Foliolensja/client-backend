@@ -1,5 +1,5 @@
 import { Body, Controller, Post } from '@nestjs/common';
-import { IndicesDto } from './dto';
+import { IndicesDto, GenerateDto } from './dto';
 import { PortfoliosService } from './portfolios.service';
 
 @Controller('portfolios')
@@ -9,5 +9,10 @@ export class PortfoliosController {
   @Post('add-indices')
   addIndices(@Body() dto: IndicesDto) {
     return this.portfolioService.addIndices(dto);
+  }
+
+  @Post('generate-portfolio')
+  generatePortfolio(@Body() dto: GenerateDto) {
+    return this.portfolioService.generatePortfolio(dto);
   }
 }

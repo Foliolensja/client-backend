@@ -20,9 +20,9 @@ export class PortfoliosController {
     return this.portfolioService.generatePortfolio(dto);
   }
 
-  @Get('test')
-  test() {
-    console.log('test');
+  @Post('test')
+  test(@Body() dto: any) {
+    console.log(dto);
     return 1;
   }
 }

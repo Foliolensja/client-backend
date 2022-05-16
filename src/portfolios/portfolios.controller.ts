@@ -8,7 +8,11 @@ export class PortfoliosController {
 
   @Post('add-indices')
   addIndices(@Body() dto: IndicesDto) {
-    return this.portfolioService.addIndices(dto);
+    try {
+      return this.portfolioService.addIndices(dto);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   @Post('generate-portfolio')

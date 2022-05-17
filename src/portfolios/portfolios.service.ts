@@ -2,7 +2,7 @@ import { ForbiddenException, Injectable } from '@nestjs/common';
 // import { PrismaClientKnownRequestError } from '@prisma/client/runtime';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { GenerateDto, IndicesDto } from './dto';
-import fetch from 'node-fetch';
+import fetch from 'cross-fetch';
 
 @Injectable()
 export class PortfoliosService {

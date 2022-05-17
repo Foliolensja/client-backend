@@ -69,7 +69,7 @@ export class TradingDaysService {
         });
       }
 
-      return dateString;
+      return { date: dateString };
     } catch (error) {
       if (error instanceof PrismaClientKnownRequestError) {
         throw new ForbiddenException(

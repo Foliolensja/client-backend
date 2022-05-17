@@ -21,6 +21,7 @@ export class PortfoliosService {
             dates: dto.tracker,
           },
           updated: false,
+          generating: false,
         },
       });
 
@@ -32,8 +33,41 @@ export class PortfoliosService {
     }
   }
 
-  generatePortfolio(dto: GenerateDto) {
-    console.log('test');
-    return dto;
+  async generatePortfolio(dto: GenerateDto) {
+    const body = {
+      id: dto.userId,
+      age: dto.age,
+      salary: dto.salary,
+      net_worth: dto.net_worth,
+      repoted_risk: dto.reported_risk,
+    };
+    const response = await fetch(
+      'https://foliolens-data-science.herokuapp.com',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept-Language': 'en-US',
+        },
+        body: JSON.stringify(body),
+      },
+    );
+
+    if (response.status === 200) {
+      try {
+        await this.prisma.user.update({
+          where: {
+            id: dto.userId,
+          },
+          data: {
+            generating: true,
+          },
+        });
+        return { result: 'Process has started.' };
+      } catch (error) {
+        throw error;
+      }
+    }
+    return { result: 'An error occured.' };
   }
 }

@@ -24,9 +24,10 @@ model User {
   salary     Float
 
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  updated   Boolean
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  updated    Boolean
+  generating Boolean
 
   portfolio Portfolio
   tracker   Tracker

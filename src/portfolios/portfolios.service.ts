@@ -55,6 +55,8 @@ export class PortfoliosService {
       },
     );
 
+    console.log(response);
+
     if (response.status === 200) {
       try {
         await this.prisma.user.update({

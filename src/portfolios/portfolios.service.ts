@@ -44,7 +44,7 @@ export class PortfoliosService {
       repoted_risk: dto.reported_risk,
     };
     const response = await fetch(
-      'https://foliolens-data-science.herokuapp.com',
+      'https://foliolens-data-science.herokuapp.com/generate-portfolio',
       {
         method: 'POST',
         headers: {

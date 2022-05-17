@@ -66,7 +66,7 @@ export class PortfoliosService {
         });
         return { result: 'Process has started.' };
       } catch (error) {
-        throw error;
+        return { result: error };
       }
     }
     return { result: 'An error occured.' };

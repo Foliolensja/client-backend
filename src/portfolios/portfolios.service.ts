@@ -41,7 +41,7 @@ export class PortfoliosService {
       age: dto.age,
       salary: dto.salary,
       net_worth: dto.net_worth,
-      repoted_risk: dto.reported_risk,
+      reported_risk: dto.reported_risk,
     };
     const response = await fetch(
       'https://foliolens-data-science.herokuapp.com/generate-portfolio',

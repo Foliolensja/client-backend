@@ -24,39 +24,33 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+This is the backend for the FolioLens Application, created with NestJS, a nodeJS framework
 
 ## Installation
 
 ```bash
-$ npm install
+$ yarn install
+```
+
+## Setting up the environment variables
+
+copy over the template .env file by running
+
+```bash
+$ cp .env.example .env
 ```
 
 ## Running the app
 
 ```bash
 # development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+$ yarn start:dev
 ```
 
-## Test
+## A bit about the application
 
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
+This app was built with Typescript, so JavaScript best practices were enforced. In addition, other non enforced best practices such as barrel exports and DTOs (Data Transfer Objects) were implemented for more tidy code.
+MongoDB was the database used to store data.
 
 ## Support
 
